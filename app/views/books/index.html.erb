@@ -34,12 +34,6 @@
               <td>
                 <%= book.body %>
               </td>
-              <td>
-                <%= link_to "Edit", edit_book_path(book.id), class: "btn btn-sm btn-success edit_book_38390" %>
-              </td>
-              <td>
-                <%= link_to "Destroy", book_path(book.id), method: :delete, class: "btn btn-sm btn-danger destroy_book_38390", "data-confirm" => "本当に消しますか？" %>
-              </td>
             </tr>
             <% end %>
           </tbody>
