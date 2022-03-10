@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_action:
 
   def index
     @books = Book.all
