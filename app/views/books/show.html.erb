@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-    <%= render 'users/user', user: @user %>
-    <%= render 'book', book: @newbook %>
+      <%= render 'users/user', user: @user %>
+      <%= render 'book', book: @newbook %>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -37,6 +37,9 @@
               <% end %>
             </td>
             <% end %>
+            <td>
+              コメント数：<%= @book.book_comments.count %>
+            </td>
             <% if @book.user_id == current_user.id %>
               <td>
                 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book_38390" %>
@@ -48,6 +51,28 @@
           </tr>
         </tbody>
       </table>
+      <table>
+        <% @book.book_comments.each do |book_comment| %>
+        <tr>
+          <td>
+            <%= image_tag book_comment.user.get_profile_image(50, 50) %><br />
+            <%= link_to book_comment.user.name, user_path(book_comment.user.id) %>
+          </td>
+          <td>
+            <%= book_comment.comment %>
+            <% if book_comment.user == current_user %>
+              <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class:"btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div>
+        <%= form_with model: [@book, @book_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5' %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
