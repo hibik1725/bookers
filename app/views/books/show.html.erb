@@ -26,14 +26,16 @@
             </td>
             <% if @book.favorited_by?(current_user) %>
             <td>
-              <%= link_to book_favorites_path(@book), method: :delete do %>
-                ♥<%= @book.favorites.count %>
+              <%= link_to book_favorites_path(@book), class:"text-danger", method: :delete do %>
+                <i class="fas fa-heart"></i>
+                <%= @book.favorites.count %>
               <% end %>
             </td>
             <% else %>
             <td>
               <%= link_to book_favorites_path(@book), method: :post do %>
-                ♡<%= @book.favorites.count %>
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <%= @book.favorites.count %>
               <% end %>
             </td>
             <% end %>
@@ -69,7 +71,7 @@
       </table>
       <div>
         <%= form_with model: [@book, @book_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5' %>
+          <%= f.text_area :comment, rows: '5' %> <br />
           <%= f.submit "送信" %>
         <% end %>
       </div>
