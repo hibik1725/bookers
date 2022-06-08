@@ -11,6 +11,18 @@
       <th>introduction</th>
       <th><%= user.introduction %></th>
     </tr>
+    <tr>
+      <th>follows</th>
+      <th><%= link_to user.following_user.count, user_followings_path(user) %></th>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <th><%= link_to user.follower_user.count, user_followers_path(user) %></th>
+    </tr>
+    <tr>
+      <th><%= render "relationships/btn", user: user %></th>
+      <th colspan='2'></th>
+    </tr>
   </tbody>
 </table>
 <div class="row">
