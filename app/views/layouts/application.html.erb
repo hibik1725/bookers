@@ -67,14 +67,16 @@
           </div>
         </div>
       </nav>
-      <% if user_signed_in? %>
-        <%= render 'layouts/search' %>
-      <% end %>
     </header>
 
     <main>
       <p id="notice">
         <%= notice %>
+      </p>
+      <p>
+        <% if user_signed_in? %>
+          <%= render 'layouts/search' %>
+        <% end %>
       </p>
       <%= yield %>
     </main>
