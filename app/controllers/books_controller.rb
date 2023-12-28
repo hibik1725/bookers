@@ -15,6 +15,7 @@ class BooksController < ApplicationController
     else
       @user = current_user
       @books = Book.all
+      binding.pry
       render :index
     end
   end
