@@ -73,11 +73,11 @@
       <p id="notice">
         <%= notice %>
       </p>
-      <p>
-        <% if user_signed_in? %>
+      <div class="d-flex justify-content-center">
+        <% if user_signed_in? && is_root_path? %>
           <%= render 'layouts/search' %>
         <% end %>
-      </p>
+      </div>
       <%= yield %>
     </main>
 
